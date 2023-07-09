@@ -7,10 +7,11 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import "./styles.css";
+import { TableHead } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: "#3B747D",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -22,6 +23,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
+  "&:last-child td, &:last-child th": {
+    border: 0,
+  },
 }));
 
 export default function HomePage() {
@@ -30,13 +34,21 @@ export default function HomePage() {
       <h1>Hey from HomePage</h1>
       <p>Eccoci sul sitello di Brawl Stars dei mu!</p>
       <TableContainer>
-        <Table aria-label="simple table">
+        <Table
+          sx={{ margin: "20px", width: "97%" }}
+          stickyHeader
+          aria-label="sticky table"
+        >
+          <TableHead>
+            <TableRow>
+              {Object.keys(brawls[0]).map((column) => (
+                <StyledTableCell>{column}</StyledTableCell>
+              ))}
+            </TableRow>
+          </TableHead>
           <TableBody>
             {Object.keys(brawls).map((column) => (
               <StyledTableRow key={column}>
-                <StyledTableCell component="th" variant="head">
-                  {column}
-                </StyledTableCell>
                 {Object.values(brawls[column]).map((row) => (
                   <StyledTableCell component="td">{row}</StyledTableCell>
                 ))}
