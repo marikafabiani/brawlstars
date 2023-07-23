@@ -6,8 +6,9 @@ import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
+import AddIcon from "@mui/icons-material/Add";
 import "./styles.css";
-import { TableHead } from "@mui/material";
+import { TableHead, Typography } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -49,11 +50,28 @@ export default function HomePage() {
           <TableBody>
             {Object.keys(brawls).map((column) => (
               <StyledTableRow key={column}>
-                {Object.values(brawls[column]).map((row) => (
-                  <StyledTableCell component="td">{row}</StyledTableCell>
+                {Object.values(brawls[column]).map((row, index) => (
+                  <StyledTableCell component="td" key={index}>
+                    {row}
+                  </StyledTableCell>
                 ))}
               </StyledTableRow>
             ))}
+            <StyledTableRow>
+              <StyledTableCell
+                colSpan={6}
+                align="center"
+                sx={{ verticalAlign: "middle" }}
+                onClick={() => console.log("ciao")}
+              >
+                <div className="addRow">
+                  <AddIcon />
+                  <Typography variant="h6" sx={{ display: "inline" }}>
+                    Aggiungi
+                  </Typography>
+                </div>
+              </StyledTableCell>
+            </StyledTableRow>
           </TableBody>
         </Table>
       </TableContainer>
