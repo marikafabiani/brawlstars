@@ -1,3 +1,3 @@
 import pandas as pd
-x = pd.read_csv("brawl_data.csv")
-x.to_json("brawl_data.json")
+x = pd.read_csv("src/brawl_data.csv")
+x.to_json("src/brawl_data.json")
