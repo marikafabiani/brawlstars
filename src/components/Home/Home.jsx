@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import brawls from "../../brawl_data.json";
 import Table from "@mui/material/Table";
@@ -9,6 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import AddIcon from "@mui/icons-material/Add";
 import "./styles.css";
 import { TableHead, Typography } from "@mui/material";
+import Modal from "./Modal";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -30,6 +31,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function HomePage() {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <>
       <h1>Hey from HomePage</h1>
@@ -62,11 +69,15 @@ export default function HomePage() {
                 colSpan={6}
                 align="center"
                 sx={{ verticalAlign: "middle" }}
-                onClick={() => console.log("ciao")}
+                onClick={handleClickOpen}
               >
                 <div className="addRow">
-                  <AddIcon />
-                  <Typography variant="h6" sx={{ display: "inline" }}>
+                  <AddIcon color="primary" />
+                  <Typography
+                    variant="h6"
+                    sx={{ display: "inline" }}
+                    color="primary"
+                  >
                     Aggiungi
                   </Typography>
                 </div>
@@ -75,6 +86,7 @@ export default function HomePage() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Modal setOpen={setOpen} open={open} />
     </>
   );
 }
