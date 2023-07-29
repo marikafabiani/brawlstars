@@ -27,8 +27,6 @@ export default function Modal({ setOpen, open, brawlers, gadgets }) {
     setOpen(false);
   };
 
-  console.log(brawlers.gadget[nameBrawler]);
-
   console.log(gadgets);
 
   return (
@@ -92,7 +90,7 @@ export default function Modal({ setOpen, open, brawlers, gadgets }) {
               onChange={handleGadget}
               defaultValue=""
             >
-              {brawlers.gadget[nameBrawler].split(",").map((g) => (
+              {brawlers.gadget[nameBrawler]?.split(",").map((g) => (
                 <MenuItem value={g}>{g}</MenuItem>
               ))}
             </Select>
@@ -105,7 +103,7 @@ export default function Modal({ setOpen, open, brawlers, gadgets }) {
               label="Abilità stellare"
               //   onChange={handleChange}
             >
-              {brawlers.starPowers[nameBrawler].split(",").map((a) => (
+              {brawlers.starPowers[nameBrawler]?.split(",").map((a) => (
                 <MenuItem value={a}>{a}</MenuItem>
               ))}
             </Select>
