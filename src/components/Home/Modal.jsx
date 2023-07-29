@@ -12,9 +12,11 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-export default function Modal({ setOpen, open, brawlers, gadgets }) {
-  const [nameBrawler, setNameBrawler] = useState();
-  const [gadget, setGadget] = useState();
+export default function Modal({ setOpen, open, brawlers, gadgets, maps }) {
+  const [nameBrawler, setNameBrawler] = useState("");
+  const [gadget, setGadget] = useState("");
+  const [abilita, setAbilita] = useState("");
+  const [mappa, setMappa] = useState("");
 
   const handleBrawler = (event) => {
     setNameBrawler(event.target.value);
@@ -22,12 +24,22 @@ export default function Modal({ setOpen, open, brawlers, gadgets }) {
   const handleGadget = (event) => {
     setGadget(event.target.value);
   };
+  const handleAbilita = (event) => {
+    setAbilita(event.target.value);
+  };
+  const handleMappa = (event) => {
+    setMappa(event.target.value);
+  };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  console.log(gadgets);
+  console.log(
+    Object.entries(maps.active)
+      .filter(([id, active]) => active === true)
+      .map((f) => f)
+  );
 
   return (
     <Dialog
@@ -38,7 +50,7 @@ export default function Modal({ setOpen, open, brawlers, gadgets }) {
     >
       <DialogTitle id="alert-dialog-title">{"Aggiungi riga"}</DialogTitle>
       <DialogContent>
-        <Box sx={{ minWidth: 120, m: 1 }}>
+        <Box sx={{ minWidth: 200, m: 1, width: 300 }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Brawler</InputLabel>
             <Select
@@ -73,22 +85,23 @@ export default function Modal({ setOpen, open, brawlers, gadgets }) {
               labelId="mappa"
               id="demo-simple-select"
               label="Mappa"
-              //   onChange={handleChange}
+              onChange={handleMappa}
+              value={mappa}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {Object.keys(maps.name).map((m) => (
+                <MenuItem value={m}>{m}</MenuItem>
+              ))}
             </Select>
           </FormControl>
           <FormControl fullWidth sx={{ mt: 2 }}>
             <InputLabel id="gadget">Gadget</InputLabel>
             <Select
+              disabled={!nameBrawler}
               labelId="gadget"
               id="demo-simple-select"
               label="Gadget"
               value={gadget}
               onChange={handleGadget}
-              defaultValue=""
             >
               {brawlers.gadget[nameBrawler]?.split(",").map((g) => (
                 <MenuItem value={g}>{g}</MenuItem>
@@ -98,10 +111,12 @@ export default function Modal({ setOpen, open, brawlers, gadgets }) {
           <FormControl fullWidth sx={{ mt: 2 }}>
             <InputLabel id="abilità">Abilità stellare</InputLabel>
             <Select
+              disabled={!nameBrawler}
               labelId="abilità"
               id="demo-simple-select"
               label="Abilità stellare"
-              //   onChange={handleChange}
+              onChange={handleAbilita}
+              value={abilita}
             >
               {brawlers.starPowers[nameBrawler]?.split(",").map((a) => (
                 <MenuItem value={a}>{a}</MenuItem>
