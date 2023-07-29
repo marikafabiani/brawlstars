@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-
+import json 
 #api request function for all maps
 def get_maps_info():
     url = "https://api.brawlapi.com/v1/maps"
@@ -36,6 +36,10 @@ df = pd.DataFrame({
     'mod':mod,
     'imageUrl': imageUrl
 })
-df = df.set_index("id")
 df["active"] = ~df["active"]
-df.to_json("src/maps_list.json")
+df=df[df.active]
+df = df.set_index("name")
+
+xdiz = df.to_dict()
+with open("src/data/maps_list.json", "w") as file:
+    json.dump(xdiz, file, indent=2)

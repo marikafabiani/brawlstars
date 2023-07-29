@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-
+import json 
 #api request function for all brawlers
 def get_brawlers_info():
     url = "https://api.brawlapi.com/v1/brawlers"
@@ -73,6 +73,21 @@ starpowers_df = pd.DataFrame(starpowers_list)
 starpowers_df["brawler"] = names_sp
 gadgets_list = [item for sublist in gadgets for item in sublist]
 gadgets_df = pd.DataFrame(gadgets_list)
+gadgets_df = gadgets_df.set_index("name")
+
 gadgets_df["brawler"] = names_g
 starpowers_df.to_json("src/starpowers_list.json")
+
+
+xdiz = gadgets_df.to_dict()
+with open("src/data/gadgets_list.json", "w") as file:
+    json.dump(xdiz, file, indent=2)
+
+starpowers_df = starpowers_df.set_index("name")
+xdiz = starpowers_df.to_dict()
+
+with open("src/data/starpowers_list.json", "w") as file:
+    json.dump(xdiz, file, indent=2)
+
+
 gadgets_df.to_json("src/gadgets_list.json")

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "brawlstars"
+version = "0.1.0"
+description = ""
+authors = ["Marika Fabiani <marikafabiani63@gmail.com>"]
+readme = "README.md"
+packages = [{include = "poetry_demo"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "2.0.3"
+requests = "2.25.1"
+pyarrow = "12.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
