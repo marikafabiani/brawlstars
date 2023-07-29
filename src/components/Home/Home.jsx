@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import brawls from "../../brawl_data.json";
+import brawlers from "../../brawlers_list.json";
+import gadgets from "../../gadgets_list.json";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -86,7 +88,12 @@ export default function HomePage() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Modal setOpen={setOpen} open={open} />
+      <Modal
+        setOpen={setOpen}
+        open={open}
+        brawlers={brawlers}
+        gadgets={gadgets}
+      />
     </>
   );
 }

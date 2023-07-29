@@ -10,15 +10,26 @@ import {
   FormControl,
   Box,
 } from "@mui/material";
+import { useState } from "react";
 
-export default function Modal({ setOpen, open }) {
-  //   const handleChange = (event: SelectChangeEvent) => {
-  //     setAge(event.target.value);
-  //   };
+export default function Modal({ setOpen, open, brawlers, gadgets }) {
+  const [nameBrawler, setNameBrawler] = useState();
+  const [gadget, setGadget] = useState();
+
+  const handleBrawler = (event) => {
+    setNameBrawler(event.target.value);
+  };
+  const handleGadget = (event) => {
+    setGadget(event.target.value);
+  };
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  console.log(brawlers.gadget[nameBrawler]);
+
+  console.log(gadgets);
 
   return (
     <Dialog
@@ -35,12 +46,14 @@ export default function Modal({ setOpen, open }) {
             <Select
               labelId="brawler"
               id="brawler"
-              //   onChange={handleChange}
+              value={nameBrawler}
+              onChange={handleBrawler}
               label="Brawler"
+              defaultValue=""
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {Object.keys(brawlers.id).map((b) => (
+                <MenuItem value={b}>{b}</MenuItem>
+              ))}
             </Select>
           </FormControl>
           <FormControl fullWidth sx={{ mt: 2 }}>
@@ -75,11 +88,13 @@ export default function Modal({ setOpen, open }) {
               labelId="gadget"
               id="demo-simple-select"
               label="Gadget"
-              //   onChange={handleChange}
+              value={gadget}
+              onChange={handleGadget}
+              defaultValue=""
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {brawlers.gadget[nameBrawler].split(",").map((g) => (
+                <MenuItem value={g}>{g}</MenuItem>
+              ))}
             </Select>
           </FormControl>
           <FormControl fullWidth sx={{ mt: 2 }}>
@@ -90,9 +105,9 @@ export default function Modal({ setOpen, open }) {
               label="Abilità stellare"
               //   onChange={handleChange}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {brawlers.starPowers[nameBrawler].split(",").map((a) => (
+                <MenuItem value={a}>{a}</MenuItem>
+              ))}
             </Select>
           </FormControl>
           <FormControl fullWidth sx={{ mt: 2 }}>
