@@ -5,7 +5,7 @@
     "Mappa": "Caverna rumorosa",
     "Gadget": "Totem",
     "Abilit\u00e0 stellare": "Occhio d'aquila",
-    "Coppia": NaN
+    "Coppia": ""
   },
   "1": {
     "Brawler": "Dynamike",
@@ -13,7 +13,7 @@
     "Mappa": "Valle rocciosa",
     "Gadget": "Carica stordente",
     "Abilit\u00e0 stellare": "Salto esplosivo",
-    "Coppia": NaN
+    "Coppia": ""
   },
   "2": {
     "Brawler": "Dynamike",
@@ -21,31 +21,31 @@
     "Mappa": "Torrente del teschio",
     "Gadget": "Carica stordente",
     "Abilit\u00e0 stellare": "Salto esplosivo",
-    "Coppia": NaN
+    "Coppia": ""
   },
   "3": {
     "Brawler": "Energetic",
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "Valle rocciosa",
     "Gadget": "Teletrasporto",
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "4": {
     "Brawler": "Eugenio",
     "Modalit\u00e0": "Arraffagemme",
     "Mappa": "Miniera rocciadura",
     "Gadget": "Allontanamento",
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "5": {
     "Brawler": "Iris",
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "Valle rocciosa",
     "Gadget": "Teletrasporto",
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "6": {
     "Brawler": "Leon",
@@ -53,15 +53,15 @@
     "Mappa": "Passaggio spettrale",
     "Gadget": "Clone",
     "Abilit\u00e0 stellare": "Velocit\u00e0",
-    "Coppia": NaN
+    "Coppia": ""
   },
   "7": {
     "Brawler": "Sandy",
     "Modalit\u00e0": "Footbrawl",
     "Mappa": "Camp Brawl",
     "Gadget": "Tranquillanti",
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "8": {
     "Brawler": "Shelly",
@@ -69,7 +69,7 @@
     "Mappa": "Caverna rumorosa",
     "Gadget": "Scatto/pallettoni",
     "Abilit\u00e0 stellare": "Cerotti/Shock al piombo",
-    "Coppia": NaN
+    "Coppia": ""
   },
   "9": {
     "Brawler": "Tara",
@@ -77,39 +77,39 @@
     "Mappa": "Caverna rumorosa",
     "Gadget": "Occhio/Cloni",
     "Abilit\u00e0 stellare": "Tarapeuta",
-    "Coppia": NaN
+    "Coppia": ""
   },
   "10": {
     "Brawler": "Frank",
     "Modalit\u00e0": "Footbrawl",
     "Mappa": "Mappa con erba in mezzo strana",
     "Gadget": "Quello che attira",
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "11": {
     "Brawler": "Pinguino",
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "Fantasie oscure",
     "Gadget": "Assistente extra ",
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "12": {
     "Brawler": "Corvo",
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "Fantasie oscure",
     "Gadget": "Rallenta",
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "13": {
     "Brawler": "Pam",
     "Modalit\u00e0": "Footbrawl",
     "Mappa": "White brawl lane",
     "Gadget": "Generatore di impulsi",
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "14": {
     "Brawler": "Profumina",
@@ -123,32 +123,32 @@
     "Brawler": "Buzz",
     "Modalit\u00e0": "Footbrawl",
     "Mappa": "Stamford brawl",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "16": {
     "Brawler": "El Primo",
     "Modalit\u00e0": "Footbrawl",
     "Mappa": "Bigliettini",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "17": {
     "Brawler": "Stecca",
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "Caverna rumorosa",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "18": {
     "Brawler": "Rosa",
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "Caverna rumorosa",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
     "Coppia": "Dynamite"
   },
   "19": {
@@ -157,22 +157,22 @@
     "Mappa": "Bigliettini",
     "Gadget": "Scudo",
     "Abilit\u00e0 stellare": "Salto con danno",
-    "Coppia": NaN
+    "Coppia": ""
   },
   "20": {
     "Brawler": "Nita",
     "Modalit\u00e0": "Footbrawl ",
-    "Mappa": NaN,
+    "Mappa": "",
     "Gadget": "Blocco",
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "21": {
     "Brawler": "Spike",
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "Piana della fame",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
     "Coppia": "Rosa"
   },
   "22": {
@@ -180,32 +180,32 @@
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "fantasie oscure",
     "Gadget": "scatto",
-    "Abilit\u00e0 stellare": NaN,
+    "Abilit\u00e0 stellare": "",
     "Coppia": "belle"
   },
   "23": {
     "Brawler": "Belle",
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "fantasie oscure",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
     "Coppia": "maxine"
   },
   "24": {
     "Brawler": "Carl",
     "Modalit\u00e0": "Sopravvivenza in due",
     "Mappa": "Laghi acidi",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
     "Coppia": "Spike"
   },
   "25": {
     "Brawler": "dynamike",
-    "Modalit\u00e0": NaN,
+    "Modalit\u00e0": "",
     "Mappa": "rovine",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
-    "Coppia": NaN
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
+    "Coppia": ""
   },
   "26": {
     "Brawler": "profumina",
@@ -219,16 +219,16 @@
     "Brawler": "Buzz",
     "Modalit\u00e0": "Footbrawl",
     "Mappa": "possesso strategico",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
     "Coppia": "profumina"
   },
   "28": {
     "Brawler": "Buzz",
     "Modalit\u00e0": "Footbrawl",
     "Mappa": "possesso strategico",
-    "Gadget": NaN,
-    "Abilit\u00e0 stellare": NaN,
+    "Gadget": "",
+    "Abilit\u00e0 stellare": "",
     "Coppia": "profumina1"
   }
 }
