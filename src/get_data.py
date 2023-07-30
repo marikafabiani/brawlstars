@@ -31,7 +31,7 @@ def write_json(df, json_file):
     with open(json_file, "w") as file:
         json.dump(xdiz, file, indent=2)
     logging.info("Data written to JSON file: %s", json_file)
-write_json(data_table, "src/data/brawl_data.json")
+write_json(data_table.T, "src/data/brawl_data.json")
 
 def get_api_data(endpoint):
     logging.info(f"Getting data from {endpoint}")
