@@ -40,8 +40,6 @@ export default function HomePage() {
     setOpen(true);
   };
 
-  console.log(datiTabella);
-
   return (
     <>
       <h1>Hey from HomePage</h1>

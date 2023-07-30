@@ -17,6 +17,8 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
   const [gadget, setGadget] = useState("");
   const [abilita, setAbilita] = useState("");
   const [mappa, setMappa] = useState("");
+  const [modalita, setModalita] = useState("");
+  const [coppia, setCoppia] = useState("");
 
   const handleBrawler = (event) => {
     setNameBrawler(event.target.value);
@@ -29,6 +31,12 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
   };
   const handleMappa = (event) => {
     setMappa(event.target.value);
+  };
+  const handleModalita = (event) => {
+    setModalita(event.target.value);
+  };
+  const handleCoppia = (event) => {
+    setCoppia(event.target.value);
   };
 
   const handleClose = () => {
@@ -60,35 +68,35 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
               ))}
             </Select>
           </FormControl>
-          {/* <FormControl fullWidth sx={{ mt: 2 }}>
+          <FormControl fullWidth sx={{ mt: 2 }}>
             <InputLabel id="modalità">Modalità</InputLabel>
             <Select
               labelId="modalità"
               id="demo-simple-select"
               label="Modalità"
-              //   onChange={handleChange}
+              onChange={handleModalita}
+              value={modalita}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {Object.keys(maps.name)?.map((m) => (
+                <MenuItem value={m}>{m}</MenuItem>
+              ))}
             </Select>
-          </FormControl> */}
-          {maps && (
-            <FormControl fullWidth sx={{ mt: 2 }}>
-              <InputLabel id="mappa">Mappa</InputLabel>
-              <Select
-                labelId="mappa"
-                id="demo-simple-select"
-                label="Mappa"
-                onChange={handleMappa}
-                value={mappa}
-              >
-                {Object.keys(maps.name)?.map((m) => (
-                  <MenuItem value={m}>{m}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          )}
+          </FormControl>
+          <FormControl fullWidth sx={{ mt: 2 }}>
+            <InputLabel id="mappa">Mappa</InputLabel>
+            <Select
+              labelId="mappa"
+              id="demo-simple-select"
+              label="Mappa"
+              onChange={handleMappa}
+              value={mappa}
+              disabled={!modalita}
+            >
+              {maps.name[modalita]?.map((m) => (
+                <MenuItem value={m}>{m}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
           {brawlers && (
             <FormControl fullWidth sx={{ mt: 2 }}>
               <InputLabel id="gadget">Gadget</InputLabel>
@@ -124,19 +132,22 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
               </Select>
             </FormControl>
           )}
-          {/* <FormControl fullWidth sx={{ mt: 2 }}>
+          <FormControl fullWidth sx={{ mt: 2 }}>
             <InputLabel id="coppia">Coppia</InputLabel>
             <Select
               labelId="coppia"
               id="demo-simple-select"
               label="Coppia"
-              //   onChange={handleChange}
+              onChange={handleCoppia}
+              value={coppia}
             >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {Object.keys(brawlers.id)
+                .filter((b) => b !== nameBrawler)
+                ?.map((b) => (
+                  <MenuItem value={b}>{b}</MenuItem>
+                ))}
             </Select>
-          </FormControl> */}
+          </FormControl>
         </Box>
       </DialogContent>
       <DialogActions>
