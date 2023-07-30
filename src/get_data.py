@@ -68,7 +68,7 @@ brawlers_info = pd.DataFrame({
     'starPowers': star_powers
 })
 brawlers_info = brawlers_info.set_index("name")
-
+write_json(brawlers_info, "src/data/brawler_list.json")
 
 #api request function for single brawler by id
 

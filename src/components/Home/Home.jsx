@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
-import brawls from "../../brawl_data.json";
-import brawlers from "../../brawlers_list.json";
-import gadgets from "../../gadgets_list.json";
-import maps from "../../maps_list.json";
+import datiTabella from "../../data/brawl_data.json";
+import brawlers from "../../data/brawler_list.json";
+import gadgets from "../../data/gadgets_list.json";
+import maps from "../../data/mods_maps_list.json";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -40,6 +40,8 @@ export default function HomePage() {
     setOpen(true);
   };
 
+  console.log(datiTabella);
+
   return (
     <>
       <h1>Hey from HomePage</h1>
@@ -52,15 +54,15 @@ export default function HomePage() {
         >
           <TableHead>
             <TableRow>
-              {Object.keys(brawls[0]).map((column) => (
+              {Object.keys(datiTabella[0])?.map((column) => (
                 <StyledTableCell>{column}</StyledTableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
-            {Object.keys(brawls).map((column) => (
+            {Object.keys(datiTabella)?.map((column) => (
               <StyledTableRow key={column}>
-                {Object.values(brawls[column]).map((row, index) => (
+                {Object.values(datiTabella[column]).map((row, index) => (
                   <StyledTableCell component="td" key={index}>
                     {row}
                   </StyledTableCell>
