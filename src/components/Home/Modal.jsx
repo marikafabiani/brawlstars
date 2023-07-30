@@ -10,7 +10,7 @@ import {
   FormControl,
   Box,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
   const [nameBrawler, setNameBrawler] = useState("");
@@ -19,6 +19,7 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
   const [mappa, setMappa] = useState("");
   const [modalita, setModalita] = useState("");
   const [coppia, setCoppia] = useState("");
+  const [nuovaRiga, setNuovaRiga] = useState({});
 
   const handleBrawler = (event) => {
     setNameBrawler(event.target.value);
@@ -41,7 +42,26 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
 
   const handleClose = () => {
     setOpen(false);
+    setNameBrawler("");
+    setAbilita("");
+    setMappa("");
+    setModalita("");
+    setGadget("");
+    setCoppia("");
   };
+
+  useEffect(() => {
+    setNuovaRiga({
+      Brawler: nameBrawler,
+      "Modalit\u00e0": modalita,
+      Mappa: mappa,
+      Gadget: gadget,
+      "Abilit\u00e0 stellare": abilita,
+      Coppia: coppia,
+    });
+  }, [nameBrawler, modalita, mappa, gadget, abilita, coppia]);
+
+  console.log(nuovaRiga);
 
   return (
     <Dialog
@@ -109,7 +129,7 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
                 onChange={handleGadget}
               >
                 {brawlers.gadget[nameBrawler]?.split(",").map((g) => (
-                  <MenuItem value={g}>{g}</MenuItem>
+                  <MenuItem value={g.trim()}>{g}</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -128,7 +148,7 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
                 {brawlers.starPowers[nameBrawler]?.split(",").length > 0 &&
                   brawlers.starPowers[nameBrawler]
                     ?.split(",")
-                    .map((a) => <MenuItem value={a}>{a}</MenuItem>)}
+                    .map((a) => <MenuItem value={a.trim()}>{a}</MenuItem>)}
               </Select>
             </FormControl>
           )}
