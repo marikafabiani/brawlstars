@@ -24,7 +24,7 @@ def add_row():
         df = pd.DataFrame(brawl_data).T
     try:
         # Leggi il nuovo record JSON in input dalla richiesta POST
-        new_row = request.get_json()
+        new_row = request.get_json(force=True)
         # Converte il nuovo record in DataFrame
         new_row_df = pd.DataFrame(new_row, index=[0])
         # Aggiungi il nuovo record al DataFrame esistente

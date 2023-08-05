@@ -53,15 +53,22 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
   useEffect(() => {
     setNuovaRiga({
       Brawler: nameBrawler,
-      "Modalit\u00e0": modalita,
+      Modalita: modalita,
       Mappa: mappa,
       Gadget: gadget,
-      "Abilit\u00e0 stellare": abilita,
+      "Abilita stellare": abilita,
       Coppia: coppia,
     });
   }, [nameBrawler, modalita, mappa, gadget, abilita, coppia]);
 
-  console.log(nuovaRiga);
+  async function addNewRow() {
+    await fetch("http://localhost:5000/api/add_row", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      mode: "no-cors",
+      body: JSON.stringify(nuovaRiga),
+    });
+  }
 
   return (
     <Dialog
@@ -172,7 +179,7 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Chiudi</Button>
-        <Button onClick={handleClose} autoFocus>
+        <Button onClick={addNewRow} autoFocus>
           Aggiungi
         </Button>
       </DialogActions>
