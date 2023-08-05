@@ -32,9 +32,27 @@ def add_row():
         # Salva il DataFrame aggiornato in brawl_data.json
         new_df.T.to_json("src/data/brawl_data.json", indent=2)
 
-        return jsonify({"message": "Nuova riga aggiunta con successo.", "data": new_df.T.to_dict()}), 200
+        return jsonify({"message": "Added row"}), 200
     except Exception as e:
         return jsonify({"message": str(e)}), 400
+
+@app.route('/api/delete_row', methods=['POST'])
+def delete_row():
+    with open("src/data/brawl_data.json") as file:
+        brawl_data = json.load(file)
+        df = pd.DataFrame(brawl_data).T
+    try:
+        # Leggi il nuovo record JSON in input dalla richiesta POST
+        to_drop = request.get_json(force=True)
+        # Rimuovi
+        df = df.drop(to_drop, axis=0).reset_index(drop=True)
+        # Salva il DataFrame aggiornato in brawl_data.json
+        df.T.to_json("src/data/brawl_data.json", indent=2)
+
+        return jsonify({"message": "Removed row"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 400
+
 
 @app.route("/api/gadgets_list")
 def get_gadgets_list():
