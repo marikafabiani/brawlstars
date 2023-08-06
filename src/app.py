@@ -3,6 +3,8 @@
 import json
 import pandas as pd
 import requests
+import os
+import shutil
 from flask import Flask, jsonify, request
 app = Flask(__name__)
 with open("src/data/brawl_data.json") as file:
@@ -69,6 +71,31 @@ def get_full_maps_list():
 @app.route("/api/mods_maps_list")
 def get_mods_maps_list():
     return jsonify(mods_maps_data)
+
+
+# dati per utente
+@app.route('/api/get_user', methods=['POST'])
+def get_user():
+    # with open("src/data/brawl_data.json") as file:
+    #     brawl_data = json.load(file)
+    #     df = pd.DataFrame(brawl_data).T
+    try:
+        # Leggi il nuovo record JSON in input dalla richiesta POST
+        user = request.get_json(force=True)
+        base_dir = os.path.join("src","data", "users")
+
+        users_list = [ f.path for f in os.scandir(base_dir) if f.is_dir() ]
+        last_elements = [string.split("/")[-1] for string in users_list]
+        if user in last_elements:
+            user_file = os.path.join(base_dir, user, "brawl_data.json")
+            master_file = os.path.join("src", "data", "brawl_data.json")
+            shutil.copy(user_file, master_file)
+
+        return jsonify({"message": "Login ok"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)}), 400
+
+
 
 
 if __name__ == "__main__":
