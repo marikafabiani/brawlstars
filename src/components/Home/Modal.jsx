@@ -40,14 +40,18 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
     setCoppia(event.target.value);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const resetModal = () => {
     setNameBrawler("");
     setAbilita("");
     setMappa("");
     setModalita("");
     setGadget("");
     setCoppia("");
+  };
+
+  const handleClose = () => {
+    resetModal();
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -68,6 +72,7 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
       mode: "no-cors",
       body: JSON.stringify(nuovaRiga),
     });
+    resetModal();
   }
 
   return (
