@@ -20,6 +20,10 @@ function Login() {
       username: "user2",
       password: "pass2",
     },
+    {
+      username: "user1",
+      password: "pass1",
+    },
   ];
 
   const errors = {
@@ -36,6 +40,15 @@ function Login() {
     // Find user login info
     const userData = database.find((user) => user.username === uname.value);
 
+    async function checkUser(username) {
+      await fetch("http://localhost:5000/api/get_user", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        mode: "no-cors",
+        body: JSON.stringify(username),
+      });
+    }
+
     // Compare user info
     if (userData) {
       if (userData.password !== pass.value) {
@@ -43,6 +56,7 @@ function Login() {
         setErrorMessages({ name: "pass", message: errors.pass });
       } else {
         setIsSubmitted(true);
+        checkUser(userData.username);
         navigate("/home");
       }
     } else {
