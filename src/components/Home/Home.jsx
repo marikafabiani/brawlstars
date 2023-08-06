@@ -10,6 +10,7 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableRow from "@mui/material/TableRow";
 import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "./styles.css";
 import { TableHead, Typography } from "@mui/material";
 import Modal from "./Modal";
@@ -40,6 +41,15 @@ export default function HomePage() {
     setOpen(true);
   };
 
+  async function deleteRow(numeroRiga) {
+    await fetch("http://localhost:5000/api/delete_row", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      mode: "no-cors",
+      body: JSON.stringify(numeroRiga),
+    });
+  }
+
   return (
     <>
       <h1>Hey from HomePage</h1>
@@ -55,9 +65,26 @@ export default function HomePage() {
               {Object.keys(datiTabella[0])?.map((column) => (
                 <StyledTableCell>{column}</StyledTableCell>
               ))}
+              <StyledTableCell>Elimina</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
+            <StyledTableCell
+              colSpan={6}
+              align="center"
+              sx={{ verticalAlign: "middle" }}
+              onClick={handleClickOpen}
+            >
+              <div className="addRow" style={{ cursor: "pointer" }}>
+                <AddIcon sx={{ color: "#3B747D" }} />
+                <Typography
+                  variant="h6"
+                  sx={{ display: "inline", color: "#3B747D" }}
+                >
+                  Aggiungi
+                </Typography>
+              </div>
+            </StyledTableCell>
             {Object.keys(datiTabella)?.map((column) => (
               <StyledTableRow key={column}>
                 {Object.values(datiTabella[column]).map((row, index) => (
@@ -65,27 +92,17 @@ export default function HomePage() {
                     {row}
                   </StyledTableCell>
                 ))}
+                <StyledTableCell component="td">
+                  <DeleteIcon
+                    sx={{ color: "#3B747D" }}
+                    onClick={() => {
+                      deleteRow(column.toString());
+                    }}
+                  />
+                </StyledTableCell>
               </StyledTableRow>
             ))}
-            <StyledTableRow>
-              <StyledTableCell
-                colSpan={6}
-                align="center"
-                sx={{ verticalAlign: "middle" }}
-                onClick={handleClickOpen}
-              >
-                <div className="addRow" style={{ cursor: "pointer" }}>
-                  <AddIcon color="primary" />
-                  <Typography
-                    variant="h6"
-                    sx={{ display: "inline" }}
-                    color="primary"
-                  >
-                    Aggiungi
-                  </Typography>
-                </div>
-              </StyledTableCell>
-            </StyledTableRow>
+            <StyledTableRow></StyledTableRow>
           </TableBody>
         </Table>
       </TableContainer>
