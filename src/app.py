@@ -7,8 +7,22 @@ import os
 import shutil
 from flask import Flask, jsonify, request
 app = Flask(__name__)
-with open("src/data/brawl_data.json") as file:
-    brawl_data = json.load(file)
+def get_table():
+    with open("src/data/brawl_data.json") as file:
+        try:
+            brawl_data = json.load(file)
+            df = pd.DataFrame(brawl_data).T
+        except:
+            column_names = ["Brawler",
+                "Modalita",
+                "Mappa",
+                "Gadget",
+                "Abilita stellare",
+                "Coppia"]
+            df=pd.DataFrame(columns=column_names)
+        return df
+
+
 with open("src/data/gadgets_list.json") as file:
     gadgets_data = json.load(file)
 with open("src/data/starpowers_list.json") as file:
@@ -21,9 +35,7 @@ with open("src/data/mods_maps_list.json") as file:
 
 @app.route('/api/add_row', methods=['POST'])
 def add_row():
-    with open("src/data/brawl_data.json") as file:
-        brawl_data = json.load(file)
-        df = pd.DataFrame(brawl_data).T
+    df = get_table()
     try:
         # Leggi il nuovo record JSON in input dalla richiesta POST
         new_row = request.get_json(force=True)
@@ -40,9 +52,7 @@ def add_row():
 
 @app.route('/api/delete_row', methods=['POST'])
 def delete_row():
-    with open("src/data/brawl_data.json") as file:
-        brawl_data = json.load(file)
-        df = pd.DataFrame(brawl_data).T
+    df = get_table()
     try:
         # Leggi il nuovo record JSON in input dalla richiesta POST
         to_drop = request.get_json(force=True)
@@ -86,12 +96,22 @@ def get_user():
 
         users_list = [ f.path for f in os.scandir(base_dir) if f.is_dir() ]
         last_elements = [string.split("/")[-1] for string in users_list]
+        result = f"User {user} data"
         if user in last_elements:
             user_file = os.path.join(base_dir, user, "brawl_data.json")
             master_file = os.path.join("src", "data", "brawl_data.json")
             shutil.copy(user_file, master_file)
-
-        return jsonify({"message": "Login ok"}), 200
+            result += " successfully retrieved"
+        else:
+            new_dir = os.path.join(base_dir, user)
+            os.makedirs(new_dir)
+            user_file = os.path.join(new_dir, "brawl_data.json")
+            with open(user_file, 'w'):
+                pass
+            master_file = os.path.join("src", "data", "brawl_data.json")
+            shutil.copy(user_file, master_file)
+            result += " successfully created"
+        return jsonify({"message": result}), 200
     except Exception as e:
         return jsonify({"message": str(e)}), 400
 
