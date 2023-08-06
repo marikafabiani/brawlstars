@@ -44,11 +44,18 @@ def add_row():
         # Aggiungi il nuovo record al DataFrame esistente
         new_df = pd.concat([df, new_row_df]).reset_index(drop=True).drop_duplicates()
         # Salva il DataFrame aggiornato in brawl_data.json
+        if new_df.shape[0] >= 2:
+            new_df.replace('', pd.NA, inplace=True)
+            new_df = new_df.dropna(how='all').reset_index(drop=True)
         new_df.T.to_json("src/data/brawl_data.json", indent=2)
-
+        master_file = os.path.join("src", "data", "brawl_data.json")
+        base_dir = os.path.join("src","data", "users")
+        user_file = os.path.join(base_dir, current_user, "brawl_data.json")
+        shutil.copy(master_file, user_file)
         return jsonify({"message": "Added row"}), 200
     except Exception as e:
-        return jsonify({"message": str(e)}), 400
+        print(e)
+        return jsonify({"message": str(e)})
 
 @app.route('/api/delete_row', methods=['POST'])
 def delete_row():
@@ -60,10 +67,13 @@ def delete_row():
         df = df.drop(to_drop, axis=0).reset_index(drop=True)
         # Salva il DataFrame aggiornato in brawl_data.json
         df.T.to_json("src/data/brawl_data.json", indent=2)
-
+        master_file = os.path.join("src", "data", "brawl_data.json")
+        base_dir = os.path.join("src","data", "users")
+        user_file = os.path.join(base_dir, current_user, "brawl_data.json")
+        shutil.copy(master_file, user_file)
         return jsonify({"message": "Removed row"}), 200
     except Exception as e:
-        return jsonify({"message": str(e)}), 400
+        return jsonify({"message": str(e)})
 
 
 @app.route("/api/gadgets_list")
@@ -86,34 +96,35 @@ def get_mods_maps_list():
 # dati per utente
 @app.route('/api/get_user', methods=['POST'])
 def get_user():
-    # with open("src/data/brawl_data.json") as file:
-    #     brawl_data = json.load(file)
-    #     df = pd.DataFrame(brawl_data).T
     try:
         # Leggi il nuovo record JSON in input dalla richiesta POST
         user = request.get_json(force=True)
+        global current_user
+        current_user = user
         base_dir = os.path.join("src","data", "users")
 
         users_list = [ f.path for f in os.scandir(base_dir) if f.is_dir() ]
         last_elements = [string.split("/")[-1] for string in users_list]
         result = f"User {user} data"
+        master_file = os.path.join("src", "data", "brawl_data.json")
         if user in last_elements:
             user_file = os.path.join(base_dir, user, "brawl_data.json")
-            master_file = os.path.join("src", "data", "brawl_data.json")
             shutil.copy(user_file, master_file)
             result += " successfully retrieved"
         else:
             new_dir = os.path.join(base_dir, user)
             os.makedirs(new_dir)
             user_file = os.path.join(new_dir, "brawl_data.json")
-            with open(user_file, 'w'):
-                pass
-            master_file = os.path.join("src", "data", "brawl_data.json")
+            empty_file = os.path.join("src", "data", "empty.json")
+            shutil.copy(empty_file, user_file)
             shutil.copy(user_file, master_file)
             result += " successfully created"
+        df = get_table()
         return jsonify({"message": result}), 200
+    
     except Exception as e:
-        return jsonify({"message": str(e)}), 400
+        print(e)
+        return jsonify({"message": str(e)})
 
 
 

@@ -5,8 +5,7 @@
     "Mappa":"Caverna rumorosa",
     "Gadget":"Totem",
     "Abilita stellare":"Occhio d'aquila",
-    "Coppia":""
-    
+    "Coppia":null
   },
   "1":{
     "Brawler":"Dynamike",
@@ -14,8 +13,7 @@
     "Mappa":"Valle rocciosa",
     "Gadget":"Carica stordente",
     "Abilita stellare":"Salto esplosivo",
-    "Coppia":""
-    
+    "Coppia":null
   },
   "2":{
     "Brawler":"Dynamike",
@@ -23,35 +21,31 @@
     "Mappa":"Torrente del teschio",
     "Gadget":"Carica stordente",
     "Abilita stellare":"Salto esplosivo",
-    "Coppia":""
-    
+    "Coppia":null
   },
   "3":{
     "Brawler":"Energetic",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"Valle rocciosa",
     "Gadget":"Teletrasporto",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "4":{
     "Brawler":"Eugenio",
     "Modalita":"Arraffagemme",
     "Mappa":"Miniera rocciadura",
     "Gadget":"Allontanamento",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "5":{
     "Brawler":"Iris",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"Valle rocciosa",
     "Gadget":"Teletrasporto",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "6":{
     "Brawler":"Leon",
@@ -59,17 +53,15 @@
     "Mappa":"Passaggio spettrale",
     "Gadget":"Clone",
     "Abilita stellare":"Velocita",
-    "Coppia":""
-    
+    "Coppia":null
   },
   "7":{
     "Brawler":"Sandy",
     "Modalita":"Footbrawl",
     "Mappa":"Camp Brawl",
     "Gadget":"Tranquillanti",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "8":{
     "Brawler":"Shelly",
@@ -77,8 +69,7 @@
     "Mappa":"Caverna rumorosa",
     "Gadget":"Scatto\/pallettoni",
     "Abilita stellare":"Cerotti\/Shock al piombo",
-    "Coppia":""
-    
+    "Coppia":null
   },
   "9":{
     "Brawler":"Tara",
@@ -86,44 +77,39 @@
     "Mappa":"Caverna rumorosa",
     "Gadget":"Occhio\/Cloni",
     "Abilita stellare":"Tarapeuta",
-    "Coppia":""
-    
+    "Coppia":null
   },
   "10":{
     "Brawler":"Frank",
     "Modalita":"Footbrawl",
     "Mappa":"Mappa con erba in mezzo strana",
     "Gadget":"Quello che attira",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "11":{
     "Brawler":"Pinguino",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"Fantasie oscure",
     "Gadget":"Assistente extra ",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "12":{
     "Brawler":"Corvo",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"Fantasie oscure",
     "Gadget":"Rallenta",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "13":{
     "Brawler":"Pam",
     "Modalita":"Footbrawl",
     "Mappa":"White brawl lane",
     "Gadget":"Generatore di impulsi",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "14":{
     "Brawler":"Profumina",
@@ -132,43 +118,38 @@
     "Gadget":"Bracciale della friendzone",
     "Abilita stellare":"Aria viziata",
     "Coppia":"Mortis"
-    
   },
   "15":{
     "Brawler":"Buzz",
     "Modalita":"Footbrawl",
     "Mappa":"Stamford brawl",
-    "Gadget":"",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Gadget":null,
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "16":{
     "Brawler":"El Primo",
     "Modalita":"Footbrawl",
     "Mappa":"Bigliettini",
-    "Gadget":"",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Gadget":null,
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "17":{
     "Brawler":"Stecca",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"Caverna rumorosa",
-    "Gadget":"",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Gadget":null,
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "18":{
     "Brawler":"Rosa",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"Caverna rumorosa",
-    "Gadget":"",
-    "Abilita stellare":"",
+    "Gadget":null,
+    "Abilita stellare":null,
     "Coppia":"Dynamite"
-    
   },
   "19":{
     "Brawler":"Salterino",
@@ -176,58 +157,55 @@
     "Mappa":"Bigliettini",
     "Gadget":"Scudo",
     "Abilita stellare":"Salto con danno",
-    "Coppia":""
-    
+    "Coppia":null
   },
   "20":{
     "Brawler":"Nita",
     "Modalita":"Footbrawl ",
-    "Mappa":"",
+    "Mappa":null,
     "Gadget":"Blocco",
-    "Abilita stellare":"",
-    "Coppia":""
-    
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "21":{
     "Brawler":"Spike",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"Piana della fame",
-    "Gadget":"",
-    "Abilita stellare":"",
+    "Gadget":null,
+    "Abilita stellare":null,
     "Coppia":"Rosa"
-    
   },
   "22":{
     "Brawler":"Maxine",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"fantasie oscure",
     "Gadget":"scatto",
-    "Abilita stellare":"",
+    "Abilita stellare":null,
     "Coppia":"belle"
   },
   "23":{
     "Brawler":"Belle",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"fantasie oscure",
-    "Gadget":"",
-    "Abilita stellare":"",
+    "Gadget":null,
+    "Abilita stellare":null,
     "Coppia":"maxine"
   },
   "24":{
     "Brawler":"Carl",
     "Modalita":"Sopravvivenza in due",
     "Mappa":"Laghi acidi",
-    "Gadget":"",
-    "Abilita stellare":"",
+    "Gadget":null,
+    "Abilita stellare":null,
     "Coppia":"Spike"
   },
   "25":{
     "Brawler":"dynamike",
-    "Modalita":"",
+    "Modalita":null,
     "Mappa":"rovine",
-    "Gadget":"",
-    "Abilita stellare":"",
-    "Coppia":""
+    "Gadget":null,
+    "Abilita stellare":null,
+    "Coppia":null
   },
   "26":{
     "Brawler":"profumina",
@@ -241,16 +219,16 @@
     "Brawler":"Buzz",
     "Modalita":"Footbrawl",
     "Mappa":"possesso strategico",
-    "Gadget":"",
-    "Abilita stellare":"",
-    "Coppia":"profumina" 
+    "Gadget":null,
+    "Abilita stellare":null,
+    "Coppia":"profumina"
   },
   "28":{
     "Brawler":"Buzz",
     "Modalita":"Footbrawl",
     "Mappa":"possesso strategico",
-    "Gadget":"",
-    "Abilita stellare":"",
+    "Gadget":null,
+    "Abilita stellare":null,
     "Coppia":"profumina1"
   },
   "29":{
@@ -259,17 +237,9 @@
     "Mappa":"Torrente del teschio",
     "Gadget":"Carica stordente",
     "Abilita stellare":"Salto esplosivo",
-    "Coppia":""
+    "Coppia":null
   },
   "30":{
-    "Brawler":"TEST1",
-    "Modalita":"Sopravvivenza in due",
-    "Mappa":"Torrente del teschio",
-    "Gadget":"Carica stordente",
-    "Abilita stellare":"Salto esplosivo",
-    "Coppia":""
-  },
-  "31":{
     "Brawler":"Gray",
     "Modalita":"Boss Fight",
     "Mappa":"Metal Scrap",
@@ -277,7 +247,7 @@
     "Abilita stellare":"Fake Injury",
     "Coppia":"Griff"
   },
-  "32":{
+  "31":{
     "Brawler":"Pam",
     "Modalita":"Boss Fight",
     "Mappa":"Metal Scrap",
@@ -285,7 +255,7 @@
     "Abilita stellare":"Fake Injury",
     "Coppia":"Griff"
   },
-  "33":{
+  "32":{
     "Brawler":"Chester",
     "Modalita":"Duels",
     "Mappa":"Battered Battlefield",
@@ -293,7 +263,7 @@
     "Abilita stellare":"Sneak Peek",
     "Coppia":"Eve"
   },
-  "34":{
+  "33":{
     "Brawler":"Lola",
     "Modalita":"Brawl Ball",
     "Mappa":"Beach Ball",
@@ -301,7 +271,7 @@
     "Abilita stellare":"Sealed With A Kiss",
     "Coppia":"Janet"
   },
-  "35":{
+  "34":{
     "Brawler":"Lola",
     "Modalita":"Brawl Ball",
     "Mappa":"Beach Ball",
@@ -309,7 +279,7 @@
     "Abilita stellare":"Sealed With A Kiss",
     "Coppia":"Fang"
   },
-  "36":{
+  "35":{
     "Brawler":"Lola",
     "Modalita":"Brawl Ball",
     "Mappa":"Beach Ball",
@@ -317,7 +287,7 @@
     "Abilita stellare":"Sealed With A Kiss",
     "Coppia":"Griff"
   },
-  "37":{
+  "36":{
     "Brawler":"Janet",
     "Modalita":"Brawl Ball",
     "Mappa":"Beach Ball",
@@ -325,12 +295,20 @@
     "Abilita stellare":"Vocal Warm Up",
     "Coppia":"Griff"
   },
-  "38":{
+  "37":{
     "Brawler":"Gus",
     "Modalita":"Robo Rumble",
     "Mappa":"Last Stand",
     "Gadget":"Kooky Popper",
     "Abilita stellare":"Spirit Animal",
     "Coppia":"Fang"
+  },
+  "38":{
+    "Brawler":"Mandy",
+    "Modalita":null,
+    "Mappa":null,
+    "Gadget":null,
+    "Abilita stellare":"Hard Candy",
+    "Coppia":"Lola"
   }
 }
