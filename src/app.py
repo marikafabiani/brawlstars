@@ -75,7 +75,29 @@ def delete_row():
     except Exception as e:
         return jsonify({"message": str(e)})
 
+@app.route('/api/edit_row', methods=['POST'])
+def edit_row():
+    df = get_table()
+    try:
+        # Leggi il nuovo record JSON in input dalla richiesta POST
+        req = request.get_json(force=True)
+        to_edit = req["row"]
+        new_value = req["new_value"]
+        new_row = pd.DataFrame(new_value, index=[0]).reset_index(drop=True)
 
+        # modifica
+        df.loc[to_edit, :] = new_row
+
+        # Salva il DataFrame aggiornato in brawl_data.json
+        df.T.to_json("src/data/brawl_data.json", indent=2)
+        master_file = os.path.join("src", "data", "brawl_data.json")
+        base_dir = os.path.join("src","data", "users")
+        user_file = os.path.join(base_dir, current_user, "brawl_data.json")
+        shutil.copy(master_file, user_file)
+        return jsonify({"message": "Modified row"}), 200
+    except Exception as e:
+        return jsonify({"message": str(e)})
+    
 @app.route("/api/gadgets_list")
 def get_gadgets_list():
     return jsonify(gadgets_data)
