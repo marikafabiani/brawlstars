@@ -50,6 +50,8 @@ export default function HomePage() {
     });
   }
 
+  console.log("ciao");
+
   return (
     <>
       <h1>Hey from HomePage</h1>
