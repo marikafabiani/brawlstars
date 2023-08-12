@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
+export default function Modal({ setOpen, open, brawlers, maps }) {
   const [nameBrawler, setNameBrawler] = useState("");
   const [gadget, setGadget] = useState("");
   const [abilita, setAbilita] = useState("");
@@ -66,87 +66,87 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
   }, [nameBrawler, modalita, mappa, gadget, abilita, coppia]);
 
   async function addNewRow() {
-    await fetch("http://localhost:5000/api/add_row", {
+    await fetch("http://localhost:5000/api/v1/add_row", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      mode: "no-cors",
       body: JSON.stringify(nuovaRiga),
     });
     resetModal();
   }
 
   return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
-    >
-      <DialogTitle id="alert-dialog-title">{"Aggiungi riga"}</DialogTitle>
-      <DialogContent>
-        <Box sx={{ minWidth: 200, m: 1, width: 300 }}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Brawler</InputLabel>
-            <Select
-              labelId="brawler"
-              id="brawler"
-              value={nameBrawler}
-              onChange={handleBrawler}
-              label="Brawler"
-              defaultValue=""
-            >
-              {Object.keys(brawlers.id)?.map((b) => (
-                <MenuItem value={b}>{b}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl fullWidth sx={{ mt: 2 }}>
-            <InputLabel id="modalità">Modalità</InputLabel>
-            <Select
-              labelId="modalità"
-              id="demo-simple-select"
-              label="Modalità"
-              onChange={handleModalita}
-              value={modalita}
-            >
-              {Object.keys(maps.name)?.map((m) => (
-                <MenuItem value={m}>{m}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl fullWidth sx={{ mt: 2 }}>
-            <InputLabel id="mappa">Mappa</InputLabel>
-            <Select
-              labelId="mappa"
-              id="demo-simple-select"
-              label="Mappa"
-              onChange={handleMappa}
-              value={mappa}
-              disabled={!modalita}
-            >
-              {maps.name[modalita]?.map((m) => (
-                <MenuItem value={m}>{m}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          {brawlers && (
-            <FormControl fullWidth sx={{ mt: 2 }}>
-              <InputLabel id="gadget">Gadget</InputLabel>
+    brawlers &&
+    maps && (
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Aggiungi riga"}</DialogTitle>
+        <DialogContent>
+          <Box sx={{ minWidth: 200, m: 1, width: 300 }}>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Brawler</InputLabel>
               <Select
-                disabled={!nameBrawler}
-                labelId="gadget"
-                id="demo-simple-select"
-                label="Gadget"
-                value={gadget}
-                onChange={handleGadget}
+                labelId="brawler"
+                id="brawler"
+                value={nameBrawler}
+                onChange={handleBrawler}
+                label="Brawler"
+                defaultValue=""
               >
-                {brawlers.gadget[nameBrawler]?.split(",").map((g) => (
-                  <MenuItem value={g.trim()}>{g}</MenuItem>
+                {Object.keys(brawlers.id)?.map((b) => (
+                  <MenuItem value={b}>{b}</MenuItem>
                 ))}
               </Select>
             </FormControl>
-          )}
-          {brawlers && (
+            <FormControl fullWidth sx={{ mt: 2 }}>
+              <InputLabel id="modalità">Modalità</InputLabel>
+              <Select
+                labelId="modalità"
+                id="demo-simple-select"
+                label="Modalità"
+                onChange={handleModalita}
+                value={modalita}
+              >
+                {Object.keys(maps.name)?.map((m) => (
+                  <MenuItem value={m}>{m}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl fullWidth sx={{ mt: 2 }}>
+              <InputLabel id="mappa">Mappa</InputLabel>
+              <Select
+                labelId="mappa"
+                id="demo-simple-select"
+                label="Mappa"
+                onChange={handleMappa}
+                value={mappa}
+                disabled={!modalita}
+              >
+                {maps.name[modalita]?.map((m) => (
+                  <MenuItem value={m}>{m}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            {brawlers && (
+              <FormControl fullWidth sx={{ mt: 2 }}>
+                <InputLabel id="gadget">Gadget</InputLabel>
+                <Select
+                  disabled={!nameBrawler}
+                  labelId="gadget"
+                  id="demo-simple-select"
+                  label="Gadget"
+                  value={gadget}
+                  onChange={handleGadget}
+                >
+                  {brawlers.gadget[nameBrawler]?.split(",").map((g) => (
+                    <MenuItem value={g.trim()}>{g}</MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            )}
             <FormControl fullWidth sx={{ mt: 2 }}>
               <InputLabel id="abilità">Abilità stellare</InputLabel>
               <Select
@@ -163,31 +163,31 @@ export default function Modal({ setOpen, open, brawlers, maps, datiTabella }) {
                     .map((a) => <MenuItem value={a.trim()}>{a}</MenuItem>)}
               </Select>
             </FormControl>
-          )}
-          <FormControl fullWidth sx={{ mt: 2 }}>
-            <InputLabel id="coppia">Coppia</InputLabel>
-            <Select
-              labelId="coppia"
-              id="demo-simple-select"
-              label="Coppia"
-              onChange={handleCoppia}
-              value={coppia}
-            >
-              {Object.keys(brawlers.id)
-                .filter((b) => b !== nameBrawler)
-                ?.map((b) => (
-                  <MenuItem value={b}>{b}</MenuItem>
-                ))}
-            </Select>
-          </FormControl>
-        </Box>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Chiudi</Button>
-        <Button onClick={addNewRow} autoFocus>
-          Aggiungi
-        </Button>
-      </DialogActions>
-    </Dialog>
+            <FormControl fullWidth sx={{ mt: 2 }}>
+              <InputLabel id="coppia">Coppia</InputLabel>
+              <Select
+                labelId="coppia"
+                id="demo-simple-select"
+                label="Coppia"
+                onChange={handleCoppia}
+                value={coppia}
+              >
+                {Object.keys(brawlers.id)
+                  .filter((b) => b !== nameBrawler)
+                  ?.map((b) => (
+                    <MenuItem value={b}>{b}</MenuItem>
+                  ))}
+              </Select>
+            </FormControl>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Chiudi</Button>
+          <Button onClick={addNewRow} autoFocus>
+            Aggiungi
+          </Button>
+        </DialogActions>
+      </Dialog>
+    )
   );
 }

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
 //import ReactDOM from "react-dom";
 
 import "./styles.css";
+import { useEffect } from "react";
+import { Box } from "@mui/material";
 
 function Login() {
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   // User Login info
@@ -41,12 +46,15 @@ function Login() {
     const userData = database.find((user) => user.username === uname.value);
 
     async function checkUser(username) {
-      await fetch("http://localhost:5000/api/get_user", {
+      setIsLoading(true);
+      const response = await fetch("http://localhost:5000/api/v1/get_user", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        mode: "no-cors",
+        "Access-Control-Allow-Origin": "*",
         body: JSON.stringify(username),
       });
+      const r = await response.json();
+      setIsLogged(r);
     }
 
     // Compare user info
@@ -57,13 +65,20 @@ function Login() {
       } else {
         setIsSubmitted(true);
         checkUser(userData.username);
-        navigate("/home");
       }
     } else {
       // Username not found
+      setIsLoading(false);
       setErrorMessages({ name: "uname", message: errors.uname });
     }
   };
+
+  useEffect(() => {
+    if (isLogged) {
+      setIsLoading(false);
+      navigate("/home");
+    }
+  });
 
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
@@ -91,12 +106,17 @@ function Login() {
       </form>
     </div>
   );
-
   return (
     <div className="app">
       <div className="login-form">
         <div className="title">Sign In</div>
-        {isSubmitted ? "Login successful" : renderForm}
+        {isSubmitted ? (
+          <Box sx={{ display: "flex", justifyContent: "center" }}>
+            <CircularProgress />
+          </Box>
+        ) : (
+          renderForm
+        )}
       </div>
     </div>
   );
