@@ -54,58 +54,60 @@ export default function HomePage() {
     <>
       <h1>Hey from HomePage</h1>
       <p>Eccoci sul sitello di Brawl Stars dei mu!</p>
-      <TableContainer>
-        <Table
-          sx={{ margin: "20px", width: "97%" }}
-          stickyHeader
-          aria-label="sticky table"
-        >
-          <TableHead>
-            <TableRow>
-              {Object.keys(datiTabella[0])?.map((column) => (
-                <StyledTableCell>{column}</StyledTableCell>
-              ))}
-              <StyledTableCell>Elimina</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <StyledTableCell
-              colSpan={6}
-              align="center"
-              sx={{ verticalAlign: "middle" }}
-              onClick={handleClickOpen}
-            >
-              <div className="addRow" style={{ cursor: "pointer" }}>
-                <AddIcon sx={{ color: "#3B747D" }} />
-                <Typography
-                  variant="h6"
-                  sx={{ display: "inline", color: "#3B747D" }}
-                >
-                  Aggiungi
-                </Typography>
-              </div>
-            </StyledTableCell>
-            {Object.keys(datiTabella)?.map((column) => (
-              <StyledTableRow key={column}>
-                {Object.values(datiTabella[column]).map((row, index) => (
-                  <StyledTableCell component="td" key={index}>
-                    {row}
-                  </StyledTableCell>
+      {Object.keys(datiTabella).length > 0 && (
+        <TableContainer>
+          <Table
+            sx={{ margin: "20px", width: "97%" }}
+            stickyHeader
+            aria-label="sticky table"
+          >
+            <TableHead>
+              <TableRow>
+                {Object.keys(datiTabella[0])?.map((column) => (
+                  <StyledTableCell>{column}</StyledTableCell>
                 ))}
-                <StyledTableCell component="td">
-                  <DeleteIcon
-                    sx={{ color: "#3B747D" }}
-                    onClick={() => {
-                      deleteRow(column.toString());
-                    }}
-                  />
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-            <StyledTableRow></StyledTableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
+                <StyledTableCell>Elimina</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <StyledTableCell
+                colSpan={6}
+                align="center"
+                sx={{ verticalAlign: "middle" }}
+                onClick={handleClickOpen}
+              >
+                <div className="addRow" style={{ cursor: "pointer" }}>
+                  <AddIcon sx={{ color: "#3B747D" }} />
+                  <Typography
+                    variant="h6"
+                    sx={{ display: "inline", color: "#3B747D" }}
+                  >
+                    Aggiungi
+                  </Typography>
+                </div>
+              </StyledTableCell>
+              {Object.keys(datiTabella)?.map((column) => (
+                <StyledTableRow key={column}>
+                  {Object.values(datiTabella[column]).map((row) => (
+                    <StyledTableCell component="td" key={row}>
+                      {row}
+                    </StyledTableCell>
+                  ))}
+                  <StyledTableCell component="td">
+                    <DeleteIcon
+                      sx={{ color: "#3B747D" }}
+                      onClick={() => {
+                        deleteRow(column.toString());
+                      }}
+                    />
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+              <StyledTableRow></StyledTableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
       <Modal
         setOpen={setOpen}
         open={open}
