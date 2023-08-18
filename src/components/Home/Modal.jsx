@@ -10,9 +10,10 @@ import {
   FormControl,
   Box,
 } from "@mui/material";
+import host from '../../constant'
 import { useEffect, useState } from "react";
 
-export default function Modal({ setOpen, open, brawlers, maps }) {
+export default function Modal({ setOpen, open, brawlers, maps, getData }) {
   const [nameBrawler, setNameBrawler] = useState("");
   const [gadget, setGadget] = useState("");
   const [abilita, setAbilita] = useState("");
@@ -66,12 +67,13 @@ export default function Modal({ setOpen, open, brawlers, maps }) {
   }, [nameBrawler, modalita, mappa, gadget, abilita, coppia]);
 
   async function addNewRow() {
-    await fetch("http://localhost:5000/api/v1/add_row", {
+    await fetch(`${host}add_row`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(nuovaRiga),
     });
     resetModal();
+    getData();
   }
 
   return (
@@ -97,7 +99,7 @@ export default function Modal({ setOpen, open, brawlers, maps }) {
                 defaultValue=""
               >
                 {Object.keys(brawlers.id)?.map((b) => (
-                  <MenuItem value={b}>{b}</MenuItem>
+                  <MenuItem key={b} value={b}>{b}</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -111,7 +113,7 @@ export default function Modal({ setOpen, open, brawlers, maps }) {
                 value={modalita}
               >
                 {Object.keys(maps.name)?.map((m) => (
-                  <MenuItem value={m}>{m}</MenuItem>
+                  <MenuItem key={m} value={m}>{m}</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -126,7 +128,7 @@ export default function Modal({ setOpen, open, brawlers, maps }) {
                 disabled={!modalita}
               >
                 {maps.name[modalita]?.map((m) => (
-                  <MenuItem value={m}>{m}</MenuItem>
+                  <MenuItem key={m} value={m}>{m}</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -142,7 +144,7 @@ export default function Modal({ setOpen, open, brawlers, maps }) {
                   onChange={handleGadget}
                 >
                   {brawlers.gadget[nameBrawler]?.split(",").map((g) => (
-                    <MenuItem value={g.trim()}>{g}</MenuItem>
+                    <MenuItem key={g} value={g.trim()}>{g}</MenuItem>
                   ))}
                 </Select>
               </FormControl>
@@ -160,7 +162,7 @@ export default function Modal({ setOpen, open, brawlers, maps }) {
                 {brawlers.starPowers[nameBrawler]?.split(",").length > 0 &&
                   brawlers.starPowers[nameBrawler]
                     ?.split(",")
-                    .map((a) => <MenuItem value={a.trim()}>{a}</MenuItem>)}
+                    .map((a) => <MenuItem key={a} value={a.trim()}>{a}</MenuItem>)}
               </Select>
             </FormControl>
             <FormControl fullWidth sx={{ mt: 2 }}>
@@ -175,7 +177,7 @@ export default function Modal({ setOpen, open, brawlers, maps }) {
                 {Object.keys(brawlers.id)
                   .filter((b) => b !== nameBrawler)
                   ?.map((b) => (
-                    <MenuItem value={b}>{b}</MenuItem>
+                    <MenuItem key={b} value={b}>{b}</MenuItem>
                   ))}
               </Select>
             </FormControl>

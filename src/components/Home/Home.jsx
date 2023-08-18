@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
+import host from '../../constant'
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
@@ -37,15 +38,15 @@ export default function HomePage() {
 
   const [listBrawlers, setListBrawlers] = useState();
   const [listMaps, setListMaps] = useState();
-  const [listModalita, setListModalita] = useState();
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
+  
   async function deleteRow(numeroRiga) {
     setIsLoading(true);
-    await fetch("http://localhost:5000/api/v1/delete_row", {
+    await fetch(`${host}delete_row`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(numeroRiga),
@@ -53,7 +54,7 @@ export default function HomePage() {
   }
 
   async function getTableData() {
-    const response = await fetch("http://localhost:5000/api/v1/get_data", {
+    const response = await fetch(`${host}get_data`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -63,13 +64,13 @@ export default function HomePage() {
   }
 
   async function getData() {
-    const brawler = await fetch("http://localhost:5000/api/v1/brawler_list", {
+    const brawler = await fetch(`${host}brawler_list`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
     const responseBrawler = await brawler.json();
     setListBrawlers(responseBrawler);
-    const maps = await fetch("http://localhost:5000/api/v1/mods_maps_list", {
+    const maps = await fetch(`${host}mods_maps_list`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -81,11 +82,11 @@ export default function HomePage() {
     getTableData();
     getData();
   }, []);
-
+  
   return (
     <>
-      <h1>Hey from HomePage</h1>
-      <p>Eccoci sul sitello di Brawl Stars dei mu!</p>
+      <Typography variant="h3">Brawlmu</Typography>
+      <Typography variant="body1">Questo è l'elenco dei brawler che hai salvato.</Typography>
       {isLoading ? (
         <Box
           sx={{
@@ -101,21 +102,22 @@ export default function HomePage() {
         Object.keys(datiTabella).length > 0 && (
           <TableContainer>
             <Table
-              sx={{ margin: "20px", width: "97%" }}
+              sx={{ margin: "20px", width: "98%" }}
               stickyHeader
               aria-label="sticky table"
             >
               <TableHead>
                 <TableRow>
                   {Object.keys(datiTabella[0])?.map((column) => (
-                    <StyledTableCell>{column}</StyledTableCell>
+                    <StyledTableCell key={column}>{column}</StyledTableCell>
                   ))}
                   <StyledTableCell>Elimina</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
+              <StyledTableRow>
                 <StyledTableCell
-                  colSpan={6}
+                  colSpan={7}
                   align="center"
                   sx={{ verticalAlign: "middle" }}
                   onClick={handleClickOpen}
@@ -130,14 +132,15 @@ export default function HomePage() {
                     </Typography>
                   </div>
                 </StyledTableCell>
+                </StyledTableRow>
                 {Object.keys(datiTabella)?.map((column) => (
                   <StyledTableRow key={column}>
-                    {Object.values(datiTabella[column]).map((row) => (
-                      <StyledTableCell component="td" key={row}>
+                    {Object.values(datiTabella[column]).map((row, index) => (
+                      <StyledTableCell key={`${row}-${index}`}>
                         {row}
                       </StyledTableCell>
                     ))}
-                    <StyledTableCell component="td">
+                    <StyledTableCell>
                       <DeleteIcon
                         sx={{ color: "#3B747D" }}
                         onClick={() => {
@@ -158,6 +161,7 @@ export default function HomePage() {
         open={open}
         brawlers={listBrawlers}
         maps={listMaps}
+        getData={getTableData}
       />
     </>
   );

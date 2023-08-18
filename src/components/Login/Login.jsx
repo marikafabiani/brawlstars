@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 //import ReactDOM from "react-dom";
+import host from '../../constant'
 
 import "./styles.css";
 import { useEffect } from "react";
@@ -12,7 +13,6 @@ function Login() {
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   // User Login info
@@ -46,11 +46,9 @@ function Login() {
     const userData = database.find((user) => user.username === uname.value);
 
     async function checkUser(username) {
-      setIsLoading(true);
-      const response = await fetch("http://localhost:5000/api/v1/get_user", {
+      const response = await fetch(`${host}get_user`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        "Access-Control-Allow-Origin": "*",
         body: JSON.stringify(username),
       });
       const r = await response.json();
@@ -68,17 +66,15 @@ function Login() {
       }
     } else {
       // Username not found
-      setIsLoading(false);
       setErrorMessages({ name: "uname", message: errors.uname });
     }
   };
 
   useEffect(() => {
     if (isLogged) {
-      setIsLoading(false);
       navigate("/home");
     }
-  });
+  },[isLogged, navigate]);
 
   // Generate JSX code for error message
   const renderErrorMessage = (name) =>
